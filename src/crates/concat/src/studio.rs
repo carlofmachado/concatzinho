@@ -8796,6 +8796,10 @@ impl Studio {
                 if swept > 0 {
                     log::info!("{swept} stale proxies swept from {}", project_dir.display());
                 }
+                // SynviaADS: "Convert HDR to SDR" keeps the timeline SDR
+                // when a phone's HDR clip lands on it.
+                let mut session = session;
+                session.set_hdr_follows(self.prefs.keep_hdr);
                 self.session = Some(session);
                 // The relink dialog belongs to the project that opened it;
                 // this project's own check follows below.

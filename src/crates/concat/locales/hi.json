@@ -500,6 +500,8 @@
   "settings.playhead": "प्लेहेड",
   "settings.proxies": "प्रॉक्सी",
   "settings.proxiesHint": "बंद होने पर प्लेबैक आपकी फ़ाइलें जैसी हैं वैसी ही पढ़ता है। चालू होने पर HD से बड़े हर वीडियो की एक छोटी कॉपी पृष्ठभूमि में एक बार बनती है, ताकि आधा और चौथाई पर प्लेबैक ज़्यादा सहज हो।",
+  "settings.hdrToSdr": "Convert HDR to SDR",
+  "settings.hdrToSdrHint": "On, a timeline stays SDR when an HDR clip from a phone lands on it, and the clip is tone-mapped to look right in it. Off, the timeline turns HDR with its first HDR clip.",
   "settings.rose": "गुलाब",
   "settings.runsLocally": "लोकल रूप से चलता है",
   "settings.scale": "Scale",

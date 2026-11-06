@@ -500,6 +500,8 @@
   "settings.playhead": "Cursor de reprodução",
   "settings.proxies": "Proxies",
   "settings.proxiesHint": "Desligado, a reprodução lê seus arquivos como são. Ligado, cada vídeo maior que HD ganha uma cópia menor, feita uma vez em segundo plano, para uma reprodução mais suave em Metade e Um quarto.",
+  "settings.hdrToSdr": "Converter HDR para SDR",
+  "settings.hdrToSdrHint": "Ligado, a timeline continua em SDR quando entra um clipe HDR do celular, e o clipe é convertido para ficar com a cor certa. Desligado, a timeline vira HDR no primeiro clipe HDR.",
   "settings.rose": "Rosa",
   "settings.runsLocally": "Executa localmente",
   "settings.scale": "Escala",

@@ -49,6 +49,12 @@ pub struct Editor {
     /// the front in constant time, where a Vec would shuffle the whole stack.
     undo: VecDeque<Snapshot>,
     redo: Vec<Project>,
+    /// Whether an SDR timeline turns HDR (HLG) on its first HDR clip; see
+    /// [`Editor::follow_first_hdr`]. On by default. SynviaADS turns it off
+    /// when its "Convert HDR to SDR" preference is on: the timeline stays
+    /// Rec. 709 and every HDR clip is tone-mapped into it, which is what a
+    /// phone that records HDR without being asked needs.
+    hdr_follows: bool,
 }
 
 impl Editor {
@@ -64,7 +70,21 @@ impl Editor {
             mint: IdMint::default(),
             undo: VecDeque::new(),
             redo: Vec::new(),
+            hdr_follows: true,
         }
+    }
+
+    /// Whether an SDR timeline follows its first HDR clip into HDR (HLG).
+    /// Off, a timeline keeps the colour it has and HDR clips are
+    /// tone-mapped to it. Not part of the document: it is the host's
+    /// preference, set again on every open.
+    pub fn set_hdr_follows(&mut self, follows: bool) {
+        self.hdr_follows = follows;
+    }
+
+    /// Whether an SDR timeline follows its first HDR clip into HDR.
+    pub fn hdr_follows(&self) -> bool {
+        self.hdr_follows
     }
 
     /// Restores a project from a document, adopting every id it uses so the
@@ -79,6 +99,7 @@ impl Editor {
             mint,
             undo: VecDeque::new(),
             redo: Vec::new(),
+            hdr_follows: true,
         })
     }
 
@@ -333,6 +354,9 @@ impl Editor {
     /// the Modify sheet can change it back), and only a timeline the
     /// command wrote, and did not make, is looked at.
     fn follow_first_hdr(&mut self, before: &Project) {
+        if !self.hdr_follows {
+            return;
+        }
         use std::collections::HashSet;
         use std::sync::Arc;
         let hdr = |project: &Project| -> HashSet<String> {

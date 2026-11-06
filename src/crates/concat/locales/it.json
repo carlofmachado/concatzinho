@@ -500,6 +500,8 @@
   "settings.playhead": "Playhead",
   "settings.proxies": "Proxy",
   "settings.proxiesHint": "Disattivato, la riproduzione legge i file così come sono. Attivato, ogni video più grande dell'HD riceve una copia più piccola, creata una volta in background, per una riproduzione più fluida a Metà e Un quarto.",
+  "settings.hdrToSdr": "Convert HDR to SDR",
+  "settings.hdrToSdrHint": "On, a timeline stays SDR when an HDR clip from a phone lands on it, and the clip is tone-mapped to look right in it. Off, the timeline turns HDR with its first HDR clip.",
   "settings.rose": "Rosa",
   "settings.runsLocally": "Funziona in locale",
   "settings.scale": "Scale",

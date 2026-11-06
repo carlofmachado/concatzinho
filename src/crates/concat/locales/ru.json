@@ -500,6 +500,8 @@
   "settings.playhead": "Курсор",
   "settings.proxies": "Прокси",
   "settings.proxiesHint": "Выключено: воспроизведение читает файлы как есть. Включено: для каждого видео больше HD один раз в фоне создаётся уменьшенная копия, чтобы воспроизведение в режимах «Половина» и «Четверть» было плавнее.",
+  "settings.hdrToSdr": "Convert HDR to SDR",
+  "settings.hdrToSdrHint": "On, a timeline stays SDR when an HDR clip from a phone lands on it, and the clip is tone-mapped to look right in it. Off, the timeline turns HDR with its first HDR clip.",
   "settings.rose": "Розовый",
   "settings.runsLocally": "Работает локально",
   "settings.scale": "Scale",

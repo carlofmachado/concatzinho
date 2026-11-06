@@ -500,6 +500,8 @@
   "settings.playhead": "Playhead",
   "settings.proxies": "프록시",
   "settings.proxiesHint": "끄면 파일을 그대로 재생합니다. 켜면 HD보다 큰 동영상마다 더 작은 사본을 백그라운드에서 한 번 만들어 1/2와 1/4에서 더 부드럽게 재생합니다.",
+  "settings.hdrToSdr": "Convert HDR to SDR",
+  "settings.hdrToSdrHint": "On, a timeline stays SDR when an HDR clip from a phone lands on it, and the clip is tone-mapped to look right in it. Off, the timeline turns HDR with its first HDR clip.",
   "settings.rose": "로즈",
   "settings.runsLocally": "로컬에서 실행",
   "settings.scale": "Scale",

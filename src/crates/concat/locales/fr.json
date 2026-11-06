@@ -500,6 +500,8 @@
   "settings.playhead": "Playhead",
   "settings.proxies": "Proxys",
   "settings.proxiesHint": "Désactivé, la lecture lit vos fichiers tels quels. Activé, chaque vidéo plus grande que la HD reçoit une copie plus petite, créée une fois en arrière-plan, pour une lecture plus fluide en Moitié et Quart.",
+  "settings.hdrToSdr": "Convert HDR to SDR",
+  "settings.hdrToSdrHint": "On, a timeline stays SDR when an HDR clip from a phone lands on it, and the clip is tone-mapped to look right in it. Off, the timeline turns HDR with its first HDR clip.",
   "settings.rose": "Rose",
   "settings.runsLocally": "S'exécute localement",
   "settings.scale": "Scale",

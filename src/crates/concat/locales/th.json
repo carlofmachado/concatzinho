@@ -500,6 +500,8 @@
   "settings.playhead": "หัวเล่น",
   "settings.proxies": "พร็อกซี",
   "settings.proxiesHint": "ปิด: การเล่นอ่านไฟล์ของคุณตามเดิม เปิด: วิดีโอที่ใหญ่กว่า HD แต่ละไฟล์จะได้สำเนาที่เล็กลงซึ่งสร้างครั้งเดียวในเบื้องหลัง เพื่อให้เล่นที่ ครึ่ง และ หนึ่งในสี่ ได้ลื่นขึ้น",
+  "settings.hdrToSdr": "Convert HDR to SDR",
+  "settings.hdrToSdrHint": "On, a timeline stays SDR when an HDR clip from a phone lands on it, and the clip is tone-mapped to look right in it. Off, the timeline turns HDR with its first HDR clip.",
   "settings.rose": "กุหลาบ",
   "settings.runsLocally": "ทำงานในเครื่อง",
   "settings.scale": "Scale",

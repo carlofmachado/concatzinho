@@ -500,6 +500,8 @@
   "settings.playhead": "প্লেহেড",
   "settings.proxies": "প্রক্সি",
   "settings.proxiesHint": "বন্ধ থাকলে প্লেব্যাক আপনার ফাইল যেমন আছে তেমনই পড়ে। চালু থাকলে HD-এর চেয়ে বড় প্রতিটি ভিডিওর একটি ছোট কপি পটভূমিতে একবার তৈরি হয়, যাতে অর্ধেক ও এক-চতুর্থাংশে প্লেব্যাক আরও মসৃণ হয়।",
+  "settings.hdrToSdr": "Convert HDR to SDR",
+  "settings.hdrToSdrHint": "On, a timeline stays SDR when an HDR clip from a phone lands on it, and the clip is tone-mapped to look right in it. Off, the timeline turns HDR with its first HDR clip.",
   "settings.rose": "রোজ",
   "settings.runsLocally": "স্থানীয়ভাবে চলে",
   "settings.scale": "Scale",

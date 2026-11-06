@@ -517,6 +517,16 @@ impl MediaBin {
                         .into(),
                     thumbnail: self.thumbs.get(&item.id).cloned().unwrap_or_default(),
                     wave,
+                    // An HDR file says so, and says it is converted when
+                    // the timeline it plays into is SDR.
+                    hdr: match (
+                        item.color_space.is_hdr(),
+                        studio.project().active().video.color_space.is_hdr(),
+                    ) {
+                        (false, _) => slint::SharedString::default(),
+                        (true, false) => "HDR→SDR".into(),
+                        (true, true) => "HDR".into(),
+                    },
                     selected: self.selected.contains(&item.id),
                     pick: order
                         .iter()

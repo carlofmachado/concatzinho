@@ -500,6 +500,8 @@
   "settings.playhead": "Đầu phát",
   "settings.proxies": "Proxy",
   "settings.proxiesHint": "Tắt: phát lại đọc tệp của bạn như nguyên bản. Bật: mỗi video lớn hơn HD có một bản sao nhỏ hơn, tạo một lần trong nền, để phát mượt hơn ở Một nửa và Một phần tư.",
+  "settings.hdrToSdr": "Convert HDR to SDR",
+  "settings.hdrToSdrHint": "On, a timeline stays SDR when an HDR clip from a phone lands on it, and the clip is tone-mapped to look right in it. Off, the timeline turns HDR with its first HDR clip.",
   "settings.rose": "Hồng phấn",
   "settings.runsLocally": "Chạy cục bộ",
   "settings.scale": "Scale",

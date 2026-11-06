@@ -500,6 +500,8 @@
   "settings.playhead": "Afspeelkop",
   "settings.proxies": "Proxy's",
   "settings.proxiesHint": "Uit: afspelen leest je bestanden zoals ze zijn. Aan: elke video groter dan HD krijgt eenmalig op de achtergrond een kleinere kopie, voor vloeiender afspelen bij Half en Kwart.",
+  "settings.hdrToSdr": "Convert HDR to SDR",
+  "settings.hdrToSdrHint": "On, a timeline stays SDR when an HDR clip from a phone lands on it, and the clip is tone-mapped to look right in it. Off, the timeline turns HDR with its first HDR clip.",
   "settings.rose": "Roos",
   "settings.runsLocally": "Draait lokaal",
   "settings.scale": "Scale",

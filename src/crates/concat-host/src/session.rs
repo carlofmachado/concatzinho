@@ -201,6 +201,13 @@ impl Session {
         self.apply(Command::SetTimelineVideo { timeline_id, video })
     }
 
+    /// Whether an SDR timeline turns HDR on its first HDR clip; see
+    /// `concat_project::Editor::set_hdr_follows`. The window sets it from
+    /// its "Convert HDR to SDR" preference on every open.
+    pub fn set_hdr_follows(&mut self, follows: bool) {
+        self.editor.set_hdr_follows(follows);
+    }
+
     /// The edit as it stands.
     pub fn project(&self) -> &Project {
         self.editor.project()

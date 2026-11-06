@@ -371,6 +371,35 @@ mod tests {
         );
     }
 
+    /// With the timeline told not to follow HDR (SynviaADS's "Convert HDR
+    /// to SDR"), an HDR clip laid on an SDR timeline leaves it SDR: the
+    /// clip is tone-mapped into Rec. 709 rather than the edit turned HDR.
+    #[test]
+    fn a_timeline_kept_sdr_stays_sdr_with_an_hdr_clip() {
+        use crate::model::ColorSpace;
+        let (mut editor, _, _) = fixture();
+        editor.set_hdr_follows(false);
+        let Command::AddMedia { mut item } = media("/iphone.mov", 10.0, true) else {
+            unreachable!()
+        };
+        item.color_space = ColorSpace::Hlg;
+        let hdr = editor
+            .apply(Command::AddMedia { item })
+            .expect("adds")
+            .created_id
+            .expect("id");
+        let track_id = editor.project().active().tracks[0].id.clone();
+        editor
+            .apply(Command::AddClip {
+                media_id: hdr,
+                track_id,
+                start: 20.0,
+                ripple: false,
+            })
+            .expect("adds");
+        assert!(editor.project().active().video.color_space.is_sdr());
+    }
+
     /// A hand-edited rate whose terms would overflow the frame arithmetic
     /// opens at the fallback rather than panicking an export later.
     #[test]

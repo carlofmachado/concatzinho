@@ -500,6 +500,8 @@
   "settings.playhead": "播放头",
   "settings.proxies": "代理文件",
   "settings.proxiesHint": "关闭时，播放直接读取原文件。开启后，每个大于高清的视频都会在后台生成一次较小的副本，让“一半”和“四分之一”画质下的播放更流畅。",
+  "settings.hdrToSdr": "Convert HDR to SDR",
+  "settings.hdrToSdrHint": "On, a timeline stays SDR when an HDR clip from a phone lands on it, and the clip is tone-mapped to look right in it. Off, the timeline turns HDR with its first HDR clip.",
   "settings.rose": "玫瑰",
   "settings.runsLocally": "在本地运行",
   "settings.scale": "缩放",

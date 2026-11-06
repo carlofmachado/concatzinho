@@ -68,6 +68,13 @@ pub struct Preferences {
     /// may not take (an HDR one opened NVENC first), and the person who
     /// wants one for smoother playback turns it on in Settings.
     pub proxies: bool,
+    /// Keeping HDR as HDR: off (the default), "Convert HDR to SDR" is on,
+    /// and a timeline stays SDR when an HDR clip lands on it - a phone that
+    /// records HDR without being asked is tone-mapped into Rec. 709 rather
+    /// than turning the whole edit HDR. On, the timeline follows its first
+    /// HDR clip into HDR (HLG), as upstream Concat does. Stored inverted so
+    /// that a settings file from before the switch reads as converting.
+    pub keep_hdr: bool,
     /// Drawing in software: the window and the compositor on the
     /// platform's software rasteriser (WARP, lavapipe) instead of the GPU,
     /// as the person chose in Settings > General or with `concat

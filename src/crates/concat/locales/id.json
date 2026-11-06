@@ -500,6 +500,8 @@
   "settings.playhead": "Penanda putar",
   "settings.proxies": "Proksi",
   "settings.proxiesHint": "Mati, pemutaran membaca file Anda apa adanya. Nyala, setiap video yang lebih besar dari HD mendapat salinan lebih kecil, dibuat sekali di latar belakang, agar pemutaran lebih lancar pada Setengah dan Seperempat.",
+  "settings.hdrToSdr": "Convert HDR to SDR",
+  "settings.hdrToSdrHint": "On, a timeline stays SDR when an HDR clip from a phone lands on it, and the clip is tone-mapped to look right in it. Off, the timeline turns HDR with its first HDR clip.",
   "settings.rose": "Mawar",
   "settings.runsLocally": "Berjalan secara lokal",
   "settings.scale": "Skala",

@@ -74,6 +74,9 @@ export struct MediaItemData {
     /// Same shape, same source and same normalisation as a timeline clip's:
     /// a file should look like itself wherever it is drawn.
     wave: string,
+    /// "HDR→SDR" for an HDR file tone-mapped into an SDR timeline, "HDR"
+    /// for one on an HDR timeline, empty for anything else.
+    hdr: string,
     selected: bool,
     /// Where the file is in the order of the selection, from 1, or 0 when
     /// it is not selected: the number a phone's pick wears, and the order
@@ -589,6 +592,25 @@ export component MediaCard inherits Rectangle {
                         text: root.item.kind == MediaKind.image
                             ? (root.item.format == "" ? "still" : root.item.format)
                             : Fmt.short-duration(root.item.duration);
+                        color: Theme.on-scrim;
+                        font-family: Theme.font-technical;
+                        font-size: Theme.fs-xs;
+                    }
+                }
+
+                // An HDR file, bottom left: whether it is being converted.
+                if root.item.hdr != "": Rectangle {
+                    x: 4px;
+                    y: parent.height - self.height - 4px;
+                    width: hdr-stamp.width + 7px;
+                    height: hdr-stamp.height + 2px;
+                    border-radius: Theme.r-xs;
+                    background: Theme.scrim;
+
+                    hdr-stamp := Text {
+                        x: (parent.width - self.width) / 2;
+                        y: (parent.height - self.height) / 2;
+                        text: root.item.hdr;
                         color: Theme.on-scrim;
                         font-family: Theme.font-technical;
                         font-size: Theme.fs-xs;

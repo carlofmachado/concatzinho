@@ -500,6 +500,8 @@
   "settings.playhead": "סמן הפעלה",
   "settings.proxies": "פרוקסי",
   "settings.proxiesHint": "כבוי: הניגון קורא את הקבצים שלך כפי שהם. פועל: לכל סרטון גדול מ-HD נוצר עותק קטן יותר פעם אחת ברקע, לניגון חלק יותר באיכות חצי ורבע.",
+  "settings.hdrToSdr": "Convert HDR to SDR",
+  "settings.hdrToSdrHint": "On, a timeline stays SDR when an HDR clip from a phone lands on it, and the clip is tone-mapped to look right in it. Off, the timeline turns HDR with its first HDR clip.",
   "settings.rose": "ורד",
   "settings.runsLocally": "רץ מקומית",
   "settings.scale": "Scale",

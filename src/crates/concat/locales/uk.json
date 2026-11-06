@@ -500,6 +500,8 @@
   "settings.playhead": "Курсор відтворення",
   "settings.proxies": "Проксі",
   "settings.proxiesHint": "Вимкнено: відтворення читає файли як є. Увімкнено: для кожного відео, більшого за HD, один раз у фоні створюється менша копія, щоб відтворення в режимах «Половина» і «Чверть» було плавнішим.",
+  "settings.hdrToSdr": "Convert HDR to SDR",
+  "settings.hdrToSdrHint": "On, a timeline stays SDR when an HDR clip from a phone lands on it, and the clip is tone-mapped to look right in it. Off, the timeline turns HDR with its first HDR clip.",
   "settings.rose": "Троянда",
   "settings.runsLocally": "Працює локально",
   "settings.scale": "Scale",

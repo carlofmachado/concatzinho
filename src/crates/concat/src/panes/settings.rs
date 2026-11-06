@@ -57,6 +57,9 @@ pub enum SettingsMsg {
     PlayheadStopsChanged(bool),
     /// The proxies switch: whether large files get a smaller copy to play.
     ProxiesChanged(bool),
+    /// The "Convert HDR to SDR" switch: on, a timeline stays SDR when an
+    /// HDR clip lands on it, and the clip is tone-mapped into it.
+    HdrToSdrChanged(bool),
     /// The GPU switch: on, the window and the compositor draw on the GPU;
     /// off, in software. Read at the next launch.
     GpuChanged(bool),
@@ -376,6 +379,15 @@ impl SettingsPane {
                 // On, the media already in the project gets its proxies
                 // straight away (refresh_art's stamp holds the switch);
                 // off, playback reads the files from the next frame.
+            }
+            SettingsMsg::HdrToSdrChanged(on) => {
+                studio.prefs.keep_hdr = !on;
+                studio.prefs.save(&studio.host.dirs);
+                // The open project follows from its next edit; a timeline
+                // that is HDR already stays so until Modify sets it back.
+                if let Some(session) = studio.session.as_mut() {
+                    session.set_hdr_follows(!on);
+                }
             }
             SettingsMsg::GpuChanged(on) => {
                 studio.prefs.software_gpu = !on;
@@ -952,6 +964,7 @@ impl SettingsPane {
                 .unwrap_or(2) as i32,
             playhead_stops: self.playhead_stops,
             proxies: studio.prefs.proxies,
+            hdr_to_sdr: !studio.prefs.keep_hdr,
             gpu: !studio.prefs.draws_in_software(),
             gpu_switchable: cfg!(any(windows, target_os = "linux")),
             magnetic: studio.prefs.magnetic(),

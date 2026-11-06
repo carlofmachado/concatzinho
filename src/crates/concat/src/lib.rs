@@ -2079,6 +2079,9 @@ fn start(project: Option<std::path::PathBuf>, smoke: bool) -> Result<(), slint::
     app.on_settings_proxies_changed(on_window!(|state, on: bool| {
         state.handle(Msg::Settings(SettingsMsg::ProxiesChanged(on)));
     }));
+    app.on_settings_hdr_to_sdr_changed(on_window!(|state, on: bool| {
+        state.handle(Msg::Settings(SettingsMsg::HdrToSdrChanged(on)));
+    }));
     app.on_settings_gpu_changed(on_window!(|state, on: bool| {
         state.handle(Msg::Settings(SettingsMsg::GpuChanged(on)));
     }));
