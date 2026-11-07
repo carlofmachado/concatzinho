@@ -1,0 +1,41 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# transitions/kaleidoscope_spin. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.kaleidoscope"
+name = "Kaleidoscope"
+kind = "transition"
+category = "Spin"
+order = 46
+description = "The picture folds into a turning kaleidoscope and unfolds as the next shot."
+
+[[param]]
+key = "segments"
+label = "Segments"
+min = 2
+max = 24
+default = 6
+step = 1
+
+[[param]]
+key = "spin"
+label = "Spin"
+min = 0
+max = 400
+default = 100
+step = 1
+unit = "%"
+
+[[param]]
+key = "zoom"
+label = "Tunnel zoom"
+min = 0
+max = 100
+default = 40
+step = 1
+unit = "%"
+
+[transition]
+entry = "effect.wgsl"
+fallback = "cross-fade"

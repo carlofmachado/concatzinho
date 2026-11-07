@@ -1,0 +1,51 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# transitions/analog_interference. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.analog-interference"
+name = "Analog Interference"
+kind = "transition"
+category = "Glitch"
+order = 37
+description = "A shock wave of static rings out from the centre and leaves the next shot behind it."
+
+[[param]]
+key = "stretch"
+label = "Radial stretch"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[[param]]
+key = "width"
+label = "Wave width"
+min = 2
+max = 50
+default = 14
+step = 1
+unit = "%"
+
+[[param]]
+key = "noise"
+label = "White noise"
+min = 0
+max = 100
+default = 60
+step = 1
+unit = "%"
+
+[[param]]
+key = "flash"
+label = "Flash"
+min = 0
+max = 100
+default = 35
+step = 1
+unit = "%"
+
+[transition]
+entry = "effect.wgsl"
+fallback = "cross-fade"

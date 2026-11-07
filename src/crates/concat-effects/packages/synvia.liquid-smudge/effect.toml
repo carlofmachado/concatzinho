@@ -1,0 +1,59 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# transitions/liquid_smudge. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.liquid-smudge"
+name = "Liquid Smudge"
+kind = "transition"
+category = "Dissolve"
+order = 33
+description = "The picture melts and swirls like wet paint into the next shot."
+
+[[param]]
+key = "strength"
+label = "Melt strength"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[[param]]
+key = "swirl"
+label = "Swirl"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[[param]]
+key = "melt"
+label = "Downward melt"
+min = 0
+max = 100
+default = 60
+step = 1
+unit = "%"
+
+[[param]]
+key = "bleed"
+label = "Bleed"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[[param]]
+key = "scale"
+label = "Noise scale"
+min = 1
+max = 20
+default = 5
+step = 1
+
+[transition]
+entry = "effect.wgsl"
+fallback = "cross-fade"

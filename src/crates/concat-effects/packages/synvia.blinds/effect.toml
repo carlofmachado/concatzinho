@@ -1,0 +1,59 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# transitions/linear_blinds. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.blinds"
+name = "Blinds"
+kind = "transition"
+category = "Wipe"
+order = 41
+description = "Slats turn one after another to reveal the next shot, with a glint on each edge."
+
+[[param]]
+key = "bars"
+label = "Slats"
+min = 2
+max = 40
+default = 12
+step = 1
+
+[[param]]
+key = "angle"
+label = "Angle"
+min = 0
+max = 360
+default = 0
+step = 1
+unit = "°"
+
+[[param]]
+key = "blur"
+label = "Motion blur"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[[param]]
+key = "specular"
+label = "Glint"
+min = 0
+max = 100
+default = 40
+step = 1
+unit = "%"
+
+[[param]]
+key = "stagger"
+label = "Stagger"
+min = 0
+max = 100
+default = 20
+step = 1
+unit = "%"
+
+[transition]
+entry = "effect.wgsl"
+fallback = "cross-fade"

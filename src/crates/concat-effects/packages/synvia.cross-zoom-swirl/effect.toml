@@ -1,0 +1,42 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# transitions/cross_zoom_swirl. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.cross-zoom-swirl"
+name = "Cross Zoom Swirl"
+kind = "transition"
+category = "Zoom"
+order = 45
+description = "The outgoing shot pushes in and twists while the next one pulls back into place."
+
+[[param]]
+key = "zoom"
+label = "Zoom"
+min = 0
+max = 150
+default = 60
+step = 1
+unit = "%"
+
+[[param]]
+key = "swirl"
+label = "Swirl"
+min = 0
+max = 400
+default = 160
+step = 1
+unit = "%"
+
+[[param]]
+key = "blur"
+label = "Blur"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[transition]
+entry = "effect.wgsl"
+fallback = "cross-fade"

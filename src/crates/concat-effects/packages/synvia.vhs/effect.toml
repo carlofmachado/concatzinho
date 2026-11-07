@@ -1,0 +1,69 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# transitions/vhs_scanline. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.vhs"
+name = "VHS"
+kind = "transition"
+category = "Glitch"
+order = 39
+description = "A rolling sync bar, static and colour bleed, like changing tapes."
+
+[[param]]
+key = "roll"
+label = "Roll speed"
+min = 0
+max = 400
+default = 150
+step = 1
+unit = "%"
+
+[[param]]
+key = "bar"
+label = "Bar width"
+min = 2
+max = 50
+default = 16
+step = 1
+unit = "%"
+
+[[param]]
+key = "noise"
+label = "Static"
+min = 0
+max = 100
+default = 45
+step = 1
+unit = "%"
+
+[[param]]
+key = "chroma"
+label = "Chroma bleed"
+min = 0
+max = 40
+default = 14
+step = 1
+unit = "px"
+
+[[param]]
+key = "scanlines"
+label = "Scanlines"
+min = 0
+max = 100
+default = 35
+step = 1
+unit = "%"
+
+[[param]]
+key = "jitter"
+label = "Jitter"
+min = 0
+max = 20
+default = 3
+step = 1
+unit = "%"
+
+[transition]
+entry = "effect.wgsl"
+fallback = "cross-fade"

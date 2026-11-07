@@ -1,0 +1,41 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# transitions/triangle_mosaic. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.triangle-flip"
+name = "Triangle Flip"
+kind = "transition"
+category = "Mosaic"
+order = 43
+description = "A mosaic of triangles flips over one by one to show the next shot."
+
+[[param]]
+key = "density"
+label = "Density"
+min = 3
+max = 40
+default = 10
+step = 1
+
+[[param]]
+key = "stagger"
+label = "Stagger"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[[param]]
+key = "shading"
+label = "Edge shading"
+min = 0
+max = 100
+default = 45
+step = 1
+unit = "%"
+
+[transition]
+entry = "effect.wgsl"
+fallback = "cross-fade"

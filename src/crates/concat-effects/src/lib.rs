@@ -331,8 +331,14 @@ mod tests {
     #[test]
     fn built_in_ids_are_namespaced_and_bare_aliases_still_resolve() {
         let catalogue = Catalogue::builtin();
+        // SynviaADS ships its own built-ins under `synvia.`, so they never
+        // collide with a package upstream adds later.
         for package in catalogue.packages() {
-            assert!(package.id().starts_with("concat."), "{}", package.id());
+            assert!(
+                package.id().starts_with("concat.") || package.id().starts_with("synvia."),
+                "{}",
+                package.id()
+            );
         }
         assert_eq!(catalogue.get("glow").map(Package::id), Some("concat.glow"));
         assert_eq!(

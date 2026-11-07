@@ -1,0 +1,49 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# transitions/rgb_displacement. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.rgb-tear"
+name = "RGB Tear"
+kind = "transition"
+category = "Glitch"
+order = 38
+description = "Bands of the picture tear sideways and split into red, green and blue across the cut."
+
+[[param]]
+key = "tear"
+label = "Tear amount"
+min = 0
+max = 50
+default = 12
+step = 1
+unit = "%"
+
+[[param]]
+key = "split"
+label = "Channel split"
+min = 0
+max = 60
+default = 18
+step = 1
+unit = "px"
+
+[[param]]
+key = "lines"
+label = "Tear bands"
+min = 4
+max = 120
+default = 28
+step = 1
+
+[[param]]
+key = "steps"
+label = "Hold frames"
+min = 4
+max = 60
+default = 24
+step = 1
+
+[transition]
+entry = "effect.wgsl"
+fallback = "cross-fade"

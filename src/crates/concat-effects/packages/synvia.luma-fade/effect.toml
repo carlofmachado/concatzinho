@@ -1,0 +1,32 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# transitions/luma_fade. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.luma-fade"
+name = "Luma Fade"
+kind = "transition"
+category = "Dissolve"
+order = 30
+description = "The shadows hand over first and the light follows, like a fade drawn by the picture itself."
+
+[[param]]
+key = "softness"
+label = "Softness"
+min = 1
+max = 100
+default = 25
+step = 1
+unit = "%"
+
+[[param]]
+key = "highlights"
+label = "Highlights first"
+type = "bool"
+min = 0
+max = 1
+default = 0
+
+[transition]
+entry = "effect.wgsl"
+fallback = "cross-fade"

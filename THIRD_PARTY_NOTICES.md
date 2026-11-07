@@ -262,3 +262,18 @@ https://unsplash.com/photos/2v921tlqdXE), used under the Unsplash License. The s
 and is embedded in the app; each card is the effect's own shader run over
 it on the GPU when the app first needs the card (`concat-host`'s
 `cards.rs`).
+
+## Drift transitions (SynviaADS)
+
+The transitions whose ids start with `synvia.` under
+`src/crates/concat-effects/packages/` (Luma Fade, Ink Bleed, Bubble
+Dissolve, Liquid Smudge, Particle Wind, Plasma Burn, Lens Flare Wipe,
+Analog Interference, RGB Tear, VHS, Pixelate, Blinds, Honeycomb, Triangle
+Flip, Shatter, Cross Zoom Swirl and Kaleidoscope) are adapted from the
+GLSL transition shaders of Drift by CutWire Studios
+(https://github.com/CutWire-Studios/Drift, folder `transitions/`),
+licensed under the GNU General Public License version 3 or later. They
+were rewritten in WGSL for this engine, with multi pass effects folded
+into one pass, and are combined with this AGPL-3.0-or-later work as
+section 13 of both licences allows. Each package names the Drift
+transition it comes from.

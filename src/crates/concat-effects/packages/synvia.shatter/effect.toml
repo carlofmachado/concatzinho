@@ -1,0 +1,50 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# transitions/voronoi_shatter. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.shatter"
+name = "Shatter"
+kind = "transition"
+category = "Mosaic"
+order = 44
+description = "The outgoing shot breaks into shards that fly off and fade."
+
+[[param]]
+key = "cells"
+label = "Shards"
+min = 3
+max = 40
+default = 12
+step = 1
+
+[[param]]
+key = "push"
+label = "Push distance"
+min = 0
+max = 100
+default = 35
+step = 1
+unit = "%"
+
+[[param]]
+key = "stagger"
+label = "Stagger"
+min = 0
+max = 100
+default = 40
+step = 1
+unit = "%"
+
+[[param]]
+key = "spin"
+label = "Spin"
+min = 0
+max = 100
+default = 30
+step = 1
+unit = "%"
+
+[transition]
+entry = "effect.wgsl"
+fallback = "cross-fade"

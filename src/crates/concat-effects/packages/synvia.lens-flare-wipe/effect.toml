@@ -1,0 +1,59 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# transitions/lens_flare_wipe. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.lens-flare-wipe"
+name = "Lens Flare Wipe"
+kind = "transition"
+category = "Light"
+order = 36
+description = "An anamorphic streak of light sweeps across and wipes to the next shot."
+
+[[param]]
+key = "glow"
+label = "Intensity"
+min = 0
+max = 300
+default = 140
+step = 1
+unit = "%"
+
+[[param]]
+key = "width"
+label = "Streak width"
+min = 5
+max = 100
+default = 30
+step = 1
+unit = "%"
+
+[[param]]
+key = "distort"
+label = "Distortion"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[[param]]
+key = "softness"
+label = "Edge softness"
+min = 1
+max = 40
+default = 8
+step = 1
+unit = "%"
+
+[[param]]
+key = "flare"
+label = "Flare colour"
+type = "color"
+min = 0
+max = 4294967295
+default = 2681274367
+
+[transition]
+entry = "effect.wgsl"
+fallback = "cross-fade"

@@ -1,0 +1,59 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# transitions/bubbling_dissolve. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.bubble-dissolve"
+name = "Bubble Dissolve"
+kind = "transition"
+category = "Dissolve"
+order = 32
+description = "Bubbles rise through the frame and open onto the next shot."
+
+[[param]]
+key = "cells"
+label = "Bubble density"
+min = 3
+max = 40
+default = 12
+step = 1
+
+[[param]]
+key = "size"
+label = "Bubble size"
+min = 50
+max = 250
+default = 130
+step = 1
+unit = "%"
+
+[[param]]
+key = "rise"
+label = "Rise"
+min = 0
+max = 100
+default = 45
+step = 1
+unit = "%"
+
+[[param]]
+key = "stagger"
+label = "Stagger"
+min = 0
+max = 100
+default = 60
+step = 1
+unit = "%"
+
+[[param]]
+key = "refraction"
+label = "Refraction"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[transition]
+entry = "effect.wgsl"
+fallback = "cross-fade"

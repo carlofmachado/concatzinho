@@ -1,0 +1,59 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# transitions/particle_wind. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.particle-wind"
+name = "Particle Wind"
+kind = "transition"
+category = "Dissolve"
+order = 34
+description = "The outgoing shot breaks into grains and blows away."
+
+[[param]]
+key = "strength"
+label = "Wind strength"
+min = 0
+max = 100
+default = 45
+step = 1
+unit = "%"
+
+[[param]]
+key = "turbulence"
+label = "Turbulence"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[[param]]
+key = "grain"
+label = "Grain"
+min = 4
+max = 80
+default = 30
+step = 1
+
+[[param]]
+key = "spread"
+label = "Dissolve spread"
+min = 0
+max = 100
+default = 60
+step = 1
+unit = "%"
+
+[[param]]
+key = "direction"
+label = "Direction"
+min = 0
+max = 360
+default = 0
+step = 1
+unit = "°"
+
+[transition]
+entry = "effect.wgsl"
+fallback = "cross-fade"

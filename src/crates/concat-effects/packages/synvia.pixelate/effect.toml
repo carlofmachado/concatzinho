@@ -1,0 +1,33 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# transitions/pixelate_matrix. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.pixelate"
+name = "Pixelate"
+kind = "transition"
+category = "Glitch"
+order = 40
+description = "The picture breaks into blocks, swaps shots and sharpens back up."
+
+[[param]]
+key = "blockiness"
+label = "Blockiness"
+min = 0
+max = 100
+default = 80
+step = 1
+unit = "%"
+
+[[param]]
+key = "swap"
+label = "Colour swap"
+min = 0
+max = 100
+default = 0
+step = 1
+unit = "%"
+
+[transition]
+entry = "effect.wgsl"
+fallback = "cross-fade"

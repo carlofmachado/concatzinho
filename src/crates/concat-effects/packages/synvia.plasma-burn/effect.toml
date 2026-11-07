@@ -1,0 +1,57 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# transitions/plasma_burn. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.plasma-burn"
+name = "Plasma Burn"
+kind = "transition"
+category = "Light"
+order = 35
+description = "A glowing ember front burns the outgoing shot away."
+
+[[param]]
+key = "scale"
+label = "Noise scale"
+min = 1
+max = 20
+default = 5
+step = 1
+
+[[param]]
+key = "glow"
+label = "Ember intensity"
+min = 0
+max = 200
+default = 100
+step = 1
+unit = "%"
+
+[[param]]
+key = "edge"
+label = "Edge width"
+min = 1
+max = 25
+default = 7
+step = 1
+unit = "%"
+
+[[param]]
+key = "hot"
+label = "Hot colour"
+type = "color"
+min = 0
+max = 4294967295
+default = 4293959935
+
+[[param]]
+key = "cool"
+label = "Cool colour"
+type = "color"
+min = 0
+max = 4294967295
+default = 4283435263
+
+[transition]
+entry = "effect.wgsl"
+fallback = "cross-fade"
