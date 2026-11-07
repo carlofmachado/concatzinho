@@ -1,0 +1,34 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# effects/strobe_flash. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.strobe"
+name = "Strobe"
+kind = "effect"
+category = "Light"
+order = 218
+intensity = "flash"
+description = "A white flash over the picture. Keyframe it for a strobe on the beat."
+
+[[param]]
+key = "flash"
+label = "Flash"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+animate = true
+
+[[param]]
+key = "tint"
+label = "Warmth"
+min = 0
+max = 100
+default = 15
+step = 1
+unit = "%"
+
+[wgsl]
+entry = "effect.wgsl"

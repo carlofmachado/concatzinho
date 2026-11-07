@@ -1,0 +1,68 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# effects/digital_glitch. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.digital-glitch"
+name = "Digital Glitch"
+kind = "effect"
+category = "Glitch"
+order = 207
+intensity = "amount"
+description = "A broken digital signal: blocks slip, colours split, the picture jumps and flashes."
+
+[[param]]
+key = "amount"
+label = "Amount"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[[param]]
+key = "frequency"
+label = "Frequency"
+min = 0
+max = 100
+default = 35
+step = 1
+unit = "%"
+
+[[param]]
+key = "rgb"
+label = "RGB split"
+min = 0
+max = 40
+default = 8
+step = 1
+unit = "px"
+
+[[param]]
+key = "blocks"
+label = "Block shift"
+min = 0
+max = 100
+default = 40
+step = 1
+unit = "%"
+
+[[param]]
+key = "flash"
+label = "Flash"
+min = 0
+max = 100
+default = 15
+step = 1
+unit = "%"
+
+[[param]]
+key = "seed"
+label = "Seed"
+min = 0
+max = 999
+default = 1
+step = 1
+
+[wgsl]
+entry = "effect.wgsl"

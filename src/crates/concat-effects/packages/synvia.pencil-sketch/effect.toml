@@ -1,0 +1,42 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# effects/sketch_pencil. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.pencil-sketch"
+name = "Pencil Sketch"
+kind = "effect"
+category = "Stylize"
+order = 211
+intensity = "amount"
+description = "The picture redrawn in pencil on paper."
+
+[[param]]
+key = "amount"
+label = "Amount"
+min = 0
+max = 100
+default = 70
+step = 1
+unit = "%"
+
+[[param]]
+key = "detail"
+label = "Detail"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[[param]]
+key = "contrast"
+label = "Contrast"
+min = 0
+max = 100
+default = 60
+step = 1
+unit = "%"
+
+[wgsl]
+entry = "effect.wgsl"

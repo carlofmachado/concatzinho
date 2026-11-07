@@ -1,0 +1,60 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# effects/super8_film. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.super-8"
+name = "Super 8"
+kind = "effect"
+category = "Film"
+order = 202
+intensity = "amount"
+description = "Home movie film: grain, a weaving gate, flicker, scratches and dust."
+
+[[param]]
+key = "amount"
+label = "Amount"
+min = 0
+max = 100
+default = 70
+step = 1
+unit = "%"
+
+[[param]]
+key = "grain"
+label = "Grain"
+min = 0
+max = 100
+default = 55
+step = 1
+unit = "%"
+
+[[param]]
+key = "scratches"
+label = "Scratches"
+min = 0
+max = 100
+default = 35
+step = 1
+unit = "%"
+
+[[param]]
+key = "weave"
+label = "Gate weave"
+min = 0
+max = 100
+default = 25
+step = 1
+unit = "%"
+
+[[param]]
+key = "flicker"
+label = "Flicker"
+min = 0
+max = 100
+default = 20
+step = 1
+unit = "%"
+
+[wgsl]
+entry = "effect.wgsl"

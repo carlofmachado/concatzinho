@@ -277,3 +277,10 @@ were rewritten in WGSL for this engine, with multi pass effects folded
 into one pass, and are combined with this AGPL-3.0-or-later work as
 section 13 of both licences allows. Each package names the Drift
 transition it comes from.
+
+The video effects under the same `synvia.` prefix (Light Leak, Film Burn,
+Super 8, Duotone, Bokeh Dream, VHS CRT, Scanline Glitch, Digital Glitch,
+Block Glitch, Spin Blur, Infinite Zoom, Pencil Sketch, Oil Paint, Wave
+Warp, Ripple, Shockwave, Zoom Punch, Beat Shake, Strobe and Kaleidoscope)
+are adapted the same way from Drift's `effects/` folder, under the same
+licence.

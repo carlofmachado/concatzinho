@@ -1,0 +1,50 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# effects/spin_blur. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.spin-blur"
+name = "Spin Blur"
+kind = "effect"
+category = "Blur"
+order = 209
+intensity = "amount"
+description = "The picture smears around a centre, as if the camera turned during the exposure."
+
+[[param]]
+key = "amount"
+label = "Amount"
+min = 0
+max = 100
+default = 35
+step = 1
+unit = "%"
+
+[[param]]
+key = "cx"
+label = "Centre X"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[[param]]
+key = "cy"
+label = "Centre Y"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[[param]]
+key = "samples"
+label = "Samples"
+min = 4
+max = 24
+default = 12
+step = 1
+
+[wgsl]
+entry = "effect.wgsl"

@@ -1,0 +1,49 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# effects/duotone. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.duotone"
+name = "Duotone"
+kind = "effect"
+category = "Color"
+order = 203
+intensity = "amount"
+description = "The picture in two colours, Synvia deep green in the shadows and a soft light in the highlights."
+
+[[param]]
+key = "amount"
+label = "Amount"
+min = 0
+max = 100
+default = 80
+step = 1
+unit = "%"
+
+[[param]]
+key = "shadow"
+label = "Shadows"
+type = "color"
+min = 0
+max = 4294967295
+default = 474036223
+
+[[param]]
+key = "highlight"
+label = "Highlights"
+type = "color"
+min = 0
+max = 4294967295
+default = 4076137727
+
+[[param]]
+key = "contrast"
+label = "Contrast"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[wgsl]
+entry = "effect.wgsl"

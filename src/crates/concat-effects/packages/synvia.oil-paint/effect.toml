@@ -1,0 +1,32 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# effects/oil_paint. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.oil-paint"
+name = "Oil Paint"
+kind = "effect"
+category = "Stylize"
+order = 212
+intensity = "amount"
+description = "Flat strokes of paint that keep the picture's light."
+
+[[param]]
+key = "amount"
+label = "Amount"
+min = 0
+max = 100
+default = 65
+step = 1
+unit = "%"
+
+[[param]]
+key = "radius"
+label = "Brush"
+min = 1
+max = 8
+default = 3
+step = 1
+
+[wgsl]
+entry = "effect.wgsl"

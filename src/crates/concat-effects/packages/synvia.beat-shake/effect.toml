@@ -1,0 +1,42 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# effects/beat_shake. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.beat-shake"
+name = "Beat Shake"
+kind = "effect"
+category = "Motion"
+order = 217
+intensity = "amount"
+description = "A handheld jolt: the frame shakes and tilts. Keyframe the amount on the beat."
+
+[[param]]
+key = "amount"
+label = "Amount"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+animate = true
+
+[[param]]
+key = "rotation"
+label = "Rotation"
+min = 0
+max = 100
+default = 35
+step = 1
+unit = "%"
+
+[[param]]
+key = "seed"
+label = "Seed"
+min = 0
+max = 100
+default = 50
+step = 1
+
+[wgsl]
+entry = "effect.wgsl"

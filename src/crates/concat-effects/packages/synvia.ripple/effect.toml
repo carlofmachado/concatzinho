@@ -1,0 +1,57 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# effects/ripple_water. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.ripple"
+name = "Ripple"
+kind = "effect"
+category = "Distort"
+order = 214
+description = "Rings spread over the picture like a stone dropped in water."
+
+[[param]]
+key = "amplitude"
+label = "Amplitude"
+min = 0
+max = 50
+default = 8
+step = 1
+unit = "px"
+
+[[param]]
+key = "frequency"
+label = "Frequency"
+min = 0
+max = 50
+default = 12
+step = 0.5
+
+[[param]]
+key = "speed"
+label = "Speed"
+min = 0
+max = 10
+default = 1
+step = 0.1
+
+[[param]]
+key = "cx"
+label = "Centre X"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[[param]]
+key = "cy"
+label = "Centre Y"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[wgsl]
+entry = "effect.wgsl"

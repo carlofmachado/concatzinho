@@ -1,0 +1,58 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# effects/kaleidoscope. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.kaleido-mirror"
+name = "Kaleidoscope"
+kind = "effect"
+category = "Distort"
+order = 219
+description = "The picture folded into mirrored slices around a centre."
+
+[[param]]
+key = "segments"
+label = "Segments"
+min = 2
+max = 12
+default = 6
+step = 1
+
+[[param]]
+key = "rotation"
+label = "Rotation"
+min = 0
+max = 360
+default = 0
+step = 1
+unit = "°"
+
+[[param]]
+key = "cx"
+label = "Centre X"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[[param]]
+key = "cy"
+label = "Centre Y"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[[param]]
+key = "zoom"
+label = "Zoom"
+min = 50
+max = 200
+default = 100
+step = 1
+unit = "%"
+
+[wgsl]
+entry = "effect.wgsl"

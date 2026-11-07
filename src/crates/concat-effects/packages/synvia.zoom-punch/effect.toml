@@ -1,0 +1,52 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# effects/zoom_pulse. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.zoom-punch"
+name = "Zoom Punch"
+kind = "effect"
+category = "Motion"
+order = 216
+intensity = "punch"
+description = "A hit of zoom with a smear of motion. Keyframe the punch on the beat."
+
+[[param]]
+key = "punch"
+label = "Punch"
+min = 0
+max = 100
+default = 60
+step = 1
+unit = "%"
+animate = true
+
+[[param]]
+key = "blur"
+label = "Blur"
+min = 0
+max = 100
+default = 45
+step = 1
+unit = "%"
+
+[[param]]
+key = "cx"
+label = "Centre X"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[[param]]
+key = "cy"
+label = "Centre Y"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[wgsl]
+entry = "effect.wgsl"

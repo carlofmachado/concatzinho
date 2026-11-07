@@ -1,0 +1,69 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# effects/light_leak. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.light-leak"
+name = "Light Leak"
+kind = "effect"
+category = "Light"
+order = 200
+intensity = "amount"
+description = "A coloured band of stray light drifts across the picture, flickering like a lamp."
+
+[[param]]
+key = "amount"
+label = "Amount"
+min = 0
+max = 100
+default = 55
+step = 1
+unit = "%"
+
+[[param]]
+key = "hue"
+label = "Hue"
+min = 0
+max = 360
+default = 22
+step = 1
+unit = "°"
+
+[[param]]
+key = "angle"
+label = "Angle"
+min = 0
+max = 360
+default = 0
+step = 1
+unit = "°"
+
+[[param]]
+key = "speed"
+label = "Speed"
+min = 0
+max = 400
+default = 100
+step = 1
+unit = "%"
+
+[[param]]
+key = "softness"
+label = "Softness"
+min = 2
+max = 100
+default = 30
+step = 1
+unit = "%"
+
+[[param]]
+key = "flicker"
+label = "Flicker"
+min = 0
+max = 100
+default = 20
+step = 1
+unit = "%"
+
+[wgsl]
+entry = "effect.wgsl"

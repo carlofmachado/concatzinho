@@ -1,0 +1,68 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# effects/vhs_crt. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.vhs-crt"
+name = "VHS CRT"
+kind = "effect"
+category = "Retro"
+order = 205
+description = "A tape played on an old television: scanlines, colour bleed, wobble and static."
+
+[[param]]
+key = "scanlines"
+label = "Scanlines"
+min = 0
+max = 100
+default = 35
+step = 1
+unit = "%"
+
+[[param]]
+key = "noise"
+label = "Noise"
+min = 0
+max = 100
+default = 25
+step = 1
+unit = "%"
+
+[[param]]
+key = "bleed"
+label = "Colour bleed"
+min = 0
+max = 20
+default = 3
+step = 1
+unit = "px"
+
+[[param]]
+key = "distortion"
+label = "Wobble"
+min = 0
+max = 100
+default = 20
+step = 1
+unit = "%"
+
+[[param]]
+key = "vignette"
+label = "Vignette"
+min = 0
+max = 100
+default = 25
+step = 1
+unit = "%"
+
+[[param]]
+key = "desaturation"
+label = "Desaturation"
+min = 0
+max = 100
+default = 15
+step = 1
+unit = "%"
+
+[wgsl]
+entry = "effect.wgsl"

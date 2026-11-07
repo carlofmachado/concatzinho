@@ -1,0 +1,59 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# effects/droste_zoom. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.infinite-zoom"
+name = "Infinite Zoom"
+kind = "effect"
+category = "Distort"
+order = 210
+intensity = "amount"
+description = "The picture spirals into itself, a Droste loop with no end."
+
+[[param]]
+key = "amount"
+label = "Amount"
+min = 0
+max = 100
+default = 55
+step = 1
+unit = "%"
+
+[[param]]
+key = "cx"
+label = "Centre X"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[[param]]
+key = "cy"
+label = "Centre Y"
+min = 0
+max = 100
+default = 50
+step = 1
+unit = "%"
+
+[[param]]
+key = "turns"
+label = "Turns"
+min = 0
+max = 4
+default = 1.5
+step = 0.1
+
+[[param]]
+key = "zoom"
+label = "Zoom"
+min = 50
+max = 300
+default = 120
+step = 1
+unit = "%"
+
+[wgsl]
+entry = "effect.wgsl"

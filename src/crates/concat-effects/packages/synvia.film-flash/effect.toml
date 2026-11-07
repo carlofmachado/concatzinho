@@ -1,0 +1,60 @@
+format = 2
+
+# Adapted from Drift by CutWire Studios (GPL-3.0-or-later),
+# effects/film_burn. See THIRD_PARTY_NOTICES.md.
+[effect]
+id = "synvia.film-flash"
+name = "Film Burn"
+kind = "effect"
+category = "Light"
+order = 201
+intensity = "amount"
+description = "Warm overexposed light burns in from one edge of the frame, grainy and flickering."
+
+[[param]]
+key = "amount"
+label = "Amount"
+min = 0
+max = 100
+default = 45
+step = 1
+unit = "%"
+
+[[param]]
+key = "warmth"
+label = "Warmth"
+min = 0
+max = 100
+default = 80
+step = 1
+unit = "%"
+
+[[param]]
+key = "flicker"
+label = "Flicker"
+min = 0
+max = 100
+default = 35
+step = 1
+unit = "%"
+
+[[param]]
+key = "side"
+label = "Side"
+type = "enum"
+min = 0
+max = 4
+default = 0
+values = [0, 1, 2, 3, 4]
+labels = ["Left", "Right", "Top", "Bottom", "Random"]
+
+[[param]]
+key = "seed"
+label = "Seed"
+min = 0
+max = 999
+default = 1
+step = 1
+
+[wgsl]
+entry = "effect.wgsl"
