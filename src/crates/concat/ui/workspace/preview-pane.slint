@@ -819,6 +819,15 @@ export component PreviewPane inherits Rectangle {
 
     property <float> aspect: root.output-height > 0
         ? root.output-width / root.output-height : 16 / 9;
+
+    // SynviaADS: the picture inside a phone, with the Reels safe area
+    // marked, so a vertical piece is judged where it will be watched. Only
+    // a portrait output has a phone to sit in.
+    in-out property <bool> phone-view: false;
+    property <bool> portrait: root.output-height > root.output-width;
+    property <bool> phone: root.phone-view && root.portrait;
+    /// The bezel, as a share of the screen's width.
+    property <float> bezel-k: root.phone ? 0.045 : 0;
     property <float> total-frames: Math.round(root.duration * root.frame-rate);
     property <float> frames: Math.round(root.playhead * root.frame-rate);
     property <bool> at-start: root.frames <= 0;
@@ -886,9 +895,13 @@ export component PreviewPane inherits Rectangle {
             // and the pane's shape no longer touches it. The quality picker
             // in the tray sets how much of the frame the engine composites,
             // never how large it is drawn.
+            // Fitted with the phone's bezel counted in, so the body and not
+            // just the screen fits the pane.
             property <float> fit-scale: Math.min(
-                self.room-w / Math.max(1, root.output-width),
-                self.room-h / Math.max(1, root.output-height)) / 1px;
+                self.room-w / Math.max(1, root.output-width * (1 + 2 * root.bezel-k)),
+                self.room-h / Math.max(1, root.output-height
+                    + 2 * root.bezel-k * root.output-width)) / 1px;
+            property <length> bezel: self.stage-w * root.bezel-k;
             property <bool> fitted: true;
             property <float> zoom: 1;
             property <float> scale: self.fitted ? self.fit-scale : self.zoom;
@@ -1010,6 +1023,45 @@ export component PreviewPane inherits Rectangle {
                 }
                 double-clicked => { viewport.fit(); }
 
+            // The phone's body, behind the screen: a dark slab a bezel wider
+            // than the picture on every side.
+            if root.phone: Rectangle {
+                x: stage.x - viewport.bezel;
+                y: stage.y - viewport.bezel;
+                width: stage.width + 2 * viewport.bezel;
+                height: stage.height + 2 * viewport.bezel;
+                border-radius: viewport.bezel * 3;
+                background: #0a0a0b;
+                border-width: 1px;
+                border-color: #3c3c42;
+
+                // Side buttons, so it reads as a phone at a glance.
+                Rectangle {
+                    x: -2px;
+                    y: parent.height * 0.18;
+                    width: 3px;
+                    height: parent.height * 0.05;
+                    border-radius: 1.5px;
+                    background: #3c3c42;
+                }
+                Rectangle {
+                    x: -2px;
+                    y: parent.height * 0.25;
+                    width: 3px;
+                    height: parent.height * 0.08;
+                    border-radius: 1.5px;
+                    background: #3c3c42;
+                }
+                Rectangle {
+                    x: parent.width - 1px;
+                    y: parent.height * 0.22;
+                    width: 3px;
+                    height: parent.height * 0.11;
+                    border-radius: 1.5px;
+                    background: #3c3c42;
+                }
+            }
+
             stage := Rectangle {
                 x: (parent.width - self.width) / 2 + viewport.shown-x;
                 y: (parent.height - self.height) / 2 + viewport.shown-y;
@@ -1019,9 +1071,11 @@ export component PreviewPane inherits Rectangle {
                 // A 1px ring lifts the stage off the well. Slint has no
                 // box-shadow, so the ring does the work alone — which is why
                 // it is `line-strong` and not the hairline every other edge
-                // uses.
-                border-width: 1px;
+                // uses. Inside the phone the bezel does that job, and the
+                // screen takes the phone's rounded corners.
+                border-width: root.phone ? 0px : 1px;
                 border-color: Theme.line-strong;
+                border-radius: root.phone ? viewport.bezel * 2 : 0px;
                 clip: true;
 
                 // Where a decoded frame will be drawn. Until then the stage
@@ -1069,6 +1123,145 @@ export component PreviewPane inherits Rectangle {
                     height: parent.height;
                     source: root.frame;
                     image-fit: contain;
+                }
+            }
+
+            // The phone's screen furniture over the picture: status bar,
+            // camera island, the Reels buttons and caption, and the safe
+            // area (Meta's Reels guide: 14% top, 35% bottom, 6% each side)
+            // with what falls outside it dimmed. Drawn only; no TouchArea,
+            // so every press still reaches the selection below.
+            if root.phone: Rectangle {
+                x: stage.x;
+                y: stage.y;
+                width: stage.width;
+                height: stage.height;
+                border-radius: stage.border-radius;
+                clip: true;
+
+                property <length> w: self.width;
+                property <length> h: self.height;
+                property <length> safe-l: self.w * 0.06;
+                property <length> safe-r: self.w * 0.06;
+                property <length> safe-t: self.h * 0.14;
+                property <length> safe-b: self.h * 0.35;
+                property <brush> dim: #00000052;
+                property <brush> ink: #ffffffe6;
+                property <brush> ink-soft: #ffffff8c;
+
+                // Outside the safe area, dimmed.
+                Rectangle { x: 0; y: 0; width: parent.w; height: parent.safe-t; background: parent.dim; }
+                Rectangle { x: 0; y: parent.h - parent.safe-b; width: parent.w; height: parent.safe-b; background: parent.dim; }
+                Rectangle {
+                    x: 0; y: parent.safe-t;
+                    width: parent.safe-l; height: parent.h - parent.safe-t - parent.safe-b;
+                    background: parent.dim;
+                }
+                Rectangle {
+                    x: parent.w - parent.safe-r; y: parent.safe-t;
+                    width: parent.safe-r; height: parent.h - parent.safe-t - parent.safe-b;
+                    background: parent.dim;
+                }
+                // The safe area's edge.
+                Rectangle {
+                    x: parent.safe-l;
+                    y: parent.safe-t;
+                    width: parent.w - parent.safe-l - parent.safe-r;
+                    height: parent.h - parent.safe-t - parent.safe-b;
+                    border-width: 1px;
+                    border-color: #ffffff73;
+                }
+
+                // Status bar.
+                Text {
+                    x: parent.w * 0.09;
+                    y: parent.w * 0.038;
+                    text: "9:41";
+                    color: parent.ink;
+                    font-size: Math.max(7px, parent.w * 0.04);
+                    font-weight: 600;
+                }
+                Rectangle {
+                    x: parent.w * 0.83;
+                    y: parent.w * 0.048;
+                    width: parent.w * 0.07;
+                    height: parent.w * 0.032;
+                    border-radius: parent.w * 0.008;
+                    border-width: 1px;
+                    border-color: parent.ink;
+                    Rectangle {
+                        x: 2px; y: 2px;
+                        width: (parent.width - 4px) * 0.8;
+                        height: parent.height - 4px;
+                        border-radius: 1px;
+                        background: #ffffffe6;
+                    }
+                }
+                // Camera island.
+                Rectangle {
+                    x: (parent.w - self.width) / 2;
+                    y: parent.w * 0.028;
+                    width: parent.w * 0.3;
+                    height: parent.w * 0.085;
+                    border-radius: self.height / 2;
+                    background: #000000;
+                }
+
+                // The Reels column on the right: like, comment, share, more.
+                for i in 4: Rectangle {
+                    x: parent.w * 0.875;
+                    y: parent.h * 0.58 + i * parent.w * 0.15;
+                    width: parent.w * 0.08;
+                    height: self.width;
+                    border-radius: self.width / 2;
+                    border-width: Math.max(1px, parent.w * 0.006);
+                    border-color: parent.ink;
+                }
+
+                // Profile and caption, bottom left.
+                Rectangle {
+                    x: parent.w * 0.05;
+                    y: parent.h * 0.82;
+                    width: parent.w * 0.085;
+                    height: self.width;
+                    border-radius: self.width / 2;
+                    background: parent.ink-soft;
+                    border-width: Math.max(1px, parent.w * 0.005);
+                    border-color: parent.ink;
+                }
+                Rectangle {
+                    x: parent.w * 0.16;
+                    y: parent.h * 0.82 + parent.w * 0.026;
+                    width: parent.w * 0.3;
+                    height: parent.w * 0.032;
+                    border-radius: self.height / 2;
+                    background: parent.ink;
+                }
+                Rectangle {
+                    x: parent.w * 0.05;
+                    y: parent.h * 0.87;
+                    width: parent.w * 0.68;
+                    height: parent.w * 0.026;
+                    border-radius: self.height / 2;
+                    background: parent.ink-soft;
+                }
+                Rectangle {
+                    x: parent.w * 0.05;
+                    y: parent.h * 0.87 + parent.w * 0.045;
+                    width: parent.w * 0.48;
+                    height: parent.w * 0.026;
+                    border-radius: self.height / 2;
+                    background: parent.ink-soft;
+                }
+
+                // Home indicator.
+                Rectangle {
+                    x: (parent.w - self.width) / 2;
+                    y: parent.h - parent.w * 0.04;
+                    width: parent.w * 0.35;
+                    height: Math.max(2px, parent.w * 0.012);
+                    border-radius: self.height / 2;
+                    background: parent.ink;
                 }
             }
 
@@ -1314,6 +1507,18 @@ export component PreviewPane inherits Rectangle {
                     horizontal-stretch: 1;
                     spacing: 6px;
                     alignment: end;
+
+                    // SynviaADS: the phone mockup, for portrait outputs.
+                    VerticalLayout {
+                        alignment: center;
+                        IconButton {
+                            glyph: Glyph.phone;
+                            label: I18n.t("previewPane.phoneView");
+                            checked: root.phone;
+                            enabled: root.portrait;
+                            clicked => { root.phone-view = !root.phone-view; }
+                        }
+                    }
 
                     VerticalLayout {
                         alignment: center;
